@@ -237,21 +237,4 @@ if __name__ == "__main__":
 5. Обратная связь:
    - Уведомление клиентов о статусе их запроса
    - Прогресс обработки в реальном времени
-
-Пример дополнительного улучшения:
-
-class MonitoringHandler(Handler):
-    def _can_handle(self, request: RefundRequest) -> bool:
-        # Мониторинг всех запросов
-        return True
-
-    def _process_request(self, request: RefundRequest) -> bool:
-        # Логируем метрики, но не обрабатываем запрос
-        print(f"[МОНИТОРИНГ] Запрос {request.request_id} прошел через систему")
-        # Передаем дальше, не изменяя статус
-        if self._next_handler:
-            return self._next_handler.handle_request(request)
-        return False
-
-Эта система гарантирует, что каждый запрос будет либо обработан, либо эскалирован для ручного вмешательства.
 """

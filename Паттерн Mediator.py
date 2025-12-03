@@ -357,26 +357,4 @@ if __name__ == "__main__":
    - Санкционирование: проверка прав на выполнение операций
    - Квоты: ограничение количества операций в единицу времени
 
-Пример дополнительных улучшений безопасности:
-
-class SecureOrderMediator(OrderMediator):
-    def __init__(self):
-        super().__init__()
-        self.failed_attempts = {}
-        self.max_attempts = 5
-
-    def _check_rate_limit(self, sender_id: str) -> bool:
-        if sender_id not in self.failed_attempts:
-            return True
-
-        if self.failed_attempts[sender_id] >= self.max_attempts:
-            self._log_security_event("rate_limit_exceeded", None, {"sender_id": sender_id})
-            return False
-
-        return True
-
-    def _authenticate_component(self, sender: object, auth_token: str) -> bool:
-        # Проверка аутентификационного токена
-        # В реальной системе здесь была бы проверка против базы данных или сервиса аутентификации
-        return hasattr(sender, 'auth_token') and sender.auth_token == auth_token
 """

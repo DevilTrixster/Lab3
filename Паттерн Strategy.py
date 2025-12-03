@@ -60,15 +60,4 @@ if __name__ == "__main__":
 
 1. Создать новый класс-стратегию, унаследованный от PaymentStrategy
 2. Реализовать метод process_payment с конкретной логикой обработки платежа
-3. Новый метод готов к использованию в системе
-
-Пример добавления оплаты криптовалютой:
-
-class CryptoPayment(PaymentStrategy):
-    def process_payment(self, amount):
-        print(f"Обработка криптоплатежа на сумму {amount} USD")
-
-# Использование:
-order.set_payment_strategy(CryptoPayment())
-order.process_order(500)
 """
